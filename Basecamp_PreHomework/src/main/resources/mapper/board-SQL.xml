@@ -6,14 +6,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace= "userControlMapper" >
     <select id ="selectSample" parameterType="java.util.HashMap" resultType= "java.util.HashMap">
         SELECT *
-        FROM basecamp_prehomework
+        FROM BASECAMP_PREHOMEWORK
     </select>
 
-  <!--   <insert id ="insertTable01" parameterType="java.util.HashMap" >
-        INSERT INTO TEST_USERS
-        (NAME, EMAIL)
-        VALUES
-        ( #{name}, #{email} )
+  	<insert id ="insertBoard" parameterType="java.util.HashMap" >
+        <![CDATA[
+			INSERT INTO BASECAMP_PREHOMEWORK
+			(
+				BID,
+			    BDATE, 
+			    EMAIL, 
+			    PASSWORD, 
+			    BCONTENT,
+			    BEDITDATE, 
+			)
+			VALUES
+			(
+				SEQ_TB_BOARD_IDX.NEXTVAL, 
+			    SYSDATE, 
+			    #{EMAIL}, 
+			    #{PASSWORD}, 
+			    #{CONTENT}, 
+			    0
+			)
+		]]>
     </insert>
--->
+
 </mapper>
