@@ -1,19 +1,19 @@
 package basecamp.prehomework.board;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
+import java.util.Map;
 
-import org.apache.ibatis.session.SqlSession;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import basecamp.prehomework.board.dto.BoardService;
+import basecamp.prehomework.common.map.CommandMap;
 
 /**
  * Handles requests for the application home page.
@@ -21,13 +21,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class BoardController {
 
-	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
+	Logger logger = Logger.getLogger(BoardController.class);
 
-	@Autowired
-	private SqlSession sqlSession;
-
+	@Resource(name="boardService")
+	private BoardService boardService;
+	
 	/**
 	 * Simply selects the home view to render by returning its name.
+	 * @throws Exception 
 	 */
 //	@RequestMapping(value = "/", method = RequestMethod.GET)
 //	public String home(Locale locale, Model model) {
@@ -49,45 +50,40 @@ public class BoardController {
 //	}
 	
 	@RequestMapping(value = "/boardList", method = RequestMethod.GET)
-	public String boardList(Model model) {
-
-		
-		
-		return "boardList";
+	public ModelAndView boardList(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("/boardList");
+    	
+    	List<Map<String,Object>> list = boardService.selectBoardList(commandMap.getMap());
+    	mv.addObject("list", list);
+    	
+		return mv;
 	}
 	
 	@RequestMapping(value = "/boardWrite", method = RequestMethod.GET)
 	public String boardWrite(Model model) {
 
-		
-		
 		return "boardWrite";
 	}
 	
-	@RequestMapping(value = "/insertBoard", method = RequestMethod.GET)
-	public String insertBoard(Model model){
+	@RequestMapping(value = "/insertBoard")
+	public ModelAndView insertBoard(CommandMap commandMap) throws Exception{
+		ModelAndView mv = new ModelAndView("redirect:/boardList.do");
 		
+		boardService.insertBoardList(commandMap.getMap());
 		
-		
-		return "";
+		return mv;
 	}
 	
 	@RequestMapping(value = "/boardView", method = RequestMethod.GET)
 	public String boardView(Model model) {
 
-		
-		
 		return "boardView";
 	}
 	
 	@RequestMapping(value = "/boardEdit", method = RequestMethod.GET)
 	public String boardEdit(Model model) {
 
-		
-		
 		return "boardEdit";
 	}
-	
-	
 
 }
