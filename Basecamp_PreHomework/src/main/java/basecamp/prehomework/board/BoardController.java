@@ -49,7 +49,7 @@ public class BoardController {
 //		return "home";
 //	}
 	
-	@RequestMapping(value = "/boardList", method = RequestMethod.GET)
+	@RequestMapping(value = "/boardList")
 	public ModelAndView boardList(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("/boardList");
     	
@@ -59,15 +59,21 @@ public class BoardController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/boardWrite", method = RequestMethod.GET)
-	public String boardWrite(Model model) {
-
-		return "boardWrite";
+	@RequestMapping(value = "/boardWrite")
+	public ModelAndView boardWrite(Model model) {
+		ModelAndView mv = new ModelAndView("/boardWrite");
+		
+		return mv;
 	}
 	
 	@RequestMapping(value = "/insertBoard")
 	public ModelAndView insertBoard(CommandMap commandMap) throws Exception{
-		ModelAndView mv = new ModelAndView("redirect:/boardList.do");
+		ModelAndView mv = new ModelAndView("redirect:/boardList");
+		
+		System.out.println("-----------------------------------------------------------------");
+		System.out.println(commandMap.keySet());
+		System.out.println(commandMap.getMap());
+		System.out.println("-----------------------------------------------------------------");
 		
 		boardService.insertBoardList(commandMap.getMap());
 		

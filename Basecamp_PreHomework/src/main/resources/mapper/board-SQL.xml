@@ -20,23 +20,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
   	<insert id ="insertBoard" parameterType="java.util.HashMap" >
         <![CDATA[
-			INSERT INTO BASECAMP_PREHOMEWORK
+			INSERT INTO BOARD
 			(
-				BID,
-			    BDATE, 
-			    EMAIL, 
+			    EMAIL,
 			    PASSWORD, 
 			    BCONTENT,
-			    BEDITDATE, 
+			    BDATE
 			)
 			VALUES
 			(
-				SEQ_TB_BOARD_IDX.NEXTVAL, 
-			    SYSDATE, 
-			    #{EMAIL}, 
-			    #{PASSWORD}, 
-			    #{CONTENT}, 
-			    0
+				#{EMAIL}, 
+				#{PASSWORD}, 
+				#{BCONTENT},
+				NOW()
 			)
 		]]>
     </insert>
