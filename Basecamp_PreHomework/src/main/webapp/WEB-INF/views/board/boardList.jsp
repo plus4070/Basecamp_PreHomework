@@ -30,14 +30,14 @@ table, tr, td, th{
 			<c:when test="${f:length(list) > 0}">
 				<c:forEach items="${list}" var="row">
 					<tr>
+					<input type="hidden" id="BID" value="${row.BID}"/>
 						<td>${row.BID}</td>
-						<td class="title">
-							<a href="#this" name="email">${row.EMAIL}</a>
-							<input type="hidden" id="IDX" value="${row.BID}"/>
-						</td>
+						<td>${row.EMAIL}</td>
 						<td>${row.BCONTENT }</td>
 						<td>${row.BDATE }</td>
 						<td>${row.BEDITDATE}</td>
+						<td><input type="button" id="edit" value="수정"/>	</td>
+						<td><input type="button" id="delete" value="삭제"/></td>
 					</tr>
 				</c:forEach>
 			</c:when>
@@ -59,9 +59,14 @@ table, tr, td, th{
 				f_boardWrite();
 			});	
 			
-			$("a[name='email']").on("click", function(e){ //제목 
+			$("#edit").on("click", function(e){ //제목 
 				e.preventDefault();
-				<!--f_boardView($(this));-->
+				f_boardEdit($(this));
+			});
+			
+			$("#delete").on("click", function(e){ //제목 
+				e.preventDefault();
+				f_boardDelete($(this));
 			});
 		});
 		
@@ -72,10 +77,17 @@ table, tr, td, th{
 			comSubmit.submit();
 		}
 		
-		function f_boardView(obj){
+		function f_boardEdit(obj){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/boardView' />");
-			comSubmit.addParam("BID", obj.parent().find("#BID").val());
+			comSubmit.setUrl("<c:url value='/boardInput' />");
+			comSubmit.addParam("BID", obj.parent().parent().find("#BID").val());
+			comSubmit.submit();
+		}
+		
+		function f_boardDelete(obj){
+			var comSubmit = new ComSubmit();
+			comSubmit.setUrl("<c:url value='/boardDelete' />");
+			comSubmit.addParam("BID", obj.parent().parent().find("#BID").val());
 			comSubmit.submit();
 		}
 	</script>

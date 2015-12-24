@@ -9,7 +9,6 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import basecamp.prehomework.board.dto.BoardService;
@@ -62,7 +61,6 @@ public class BoardController {
 	@RequestMapping(value = "/boardWrite")
 	public ModelAndView boardWrite(Model model) {
 		ModelAndView mv = new ModelAndView("/boardWrite");
-		
 		return mv;
 	}
 	
@@ -70,26 +68,56 @@ public class BoardController {
 	public ModelAndView insertBoard(CommandMap commandMap) throws Exception{
 		ModelAndView mv = new ModelAndView("redirect:/boardList");
 		
-		System.out.println("-----------------------------------------------------------------");
-		System.out.println(commandMap.keySet());
-		System.out.println(commandMap.getMap());
-		System.out.println("-----------------------------------------------------------------");
+//		System.out.println("-----------------------------------------------------------------");
+//		System.out.println(commandMap.getMap());
+//		System.out.println("-----------------------------------------------------------------");
 		
 		boardService.insertBoardList(commandMap.getMap());
 		
 		return mv;
 	}
 	
-	@RequestMapping(value = "/boardView", method = RequestMethod.GET)
-	public String boardView(Model model) {
-
-		return "boardView";
+	@RequestMapping(value = "/boardInput")
+	public ModelAndView inputBoard(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("/boardInput");
+		mv.addObject("target", commandMap.getMap());
+		
+		return mv;
 	}
 	
-	@RequestMapping(value = "/boardEdit", method = RequestMethod.GET)
-	public String boardEdit(Model model) {
+	@RequestMapping(value = "/boardEditCheck")
+	public ModelAndView editCheckBoard(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("/boardEditCheck");
+		
+		System.out.println("-----------------------------------------------------------------");
+		System.out.println("/boardEditCheck");
+		System.out.println(commandMap.getMap());
+		System.out.println("-----------------------------------------------------------------");
+		
+		boardService.editCheckBoardList(commandMap.getMap());
 
-		return "boardEdit";
+		return mv;
+	}
+
+	@RequestMapping(value = "/boardEdit")
+	public ModelAndView editBoard(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("redirect:/boardList");
+		
+//		boardService.editBoardList(commandMap.getMap());
+
+		return mv;
+	}
+	
+	@RequestMapping(value = "/boardDelete")
+	public ModelAndView deleteBoard(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("redirect:/boardList");
+		System.out.println("-----------------------------------------------------------------");
+		System.out.println(commandMap.getMap());
+		System.out.println("-----------------------------------------------------------------");
+		
+		boardService.deleteBoardList(commandMap.getMap());
+
+		return mv;
 	}
 
 }

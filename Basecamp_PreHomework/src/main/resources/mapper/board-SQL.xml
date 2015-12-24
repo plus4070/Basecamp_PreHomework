@@ -36,5 +36,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			)
 		]]>
     </insert>
+    
+    <delete id="deleteBoard" parameterType="java.util.HashMap" >
+    	<![CDATA[
+	        DELETE 
+	        	FROM BOARD
+	        WHERE
+	            BID = #{BID}
+   		]]>
+    </delete>
+    
+    <select id="editCheckBoard" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+	     <![CDATA[
+			SELECT
+			    BID,
+			    EMAIL,
+			    PASSWORD
+			FROM
+			    BOARD
+			WHERE
+				BID = #{BID}
+		]]>
+    </select>
 
 </mapper>
