@@ -25,57 +25,57 @@ public class BoardController {
 	@Resource(name="boardService")
 	private BoardService boardService;
 	
-	@RequestMapping(value = "/boardList")
+	@RequestMapping(value = "/board/boardList.do")
 	public ModelAndView boardList(CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("/boardList");
+		ModelAndView mv = new ModelAndView("/board/boardList");
     	List<Map<String,Object>> list = boardService.selectBoardList(commandMap.getMap());
     	mv.addObject("list", list);
 		return mv;
 	}
 	
-	@RequestMapping(value = "/boardWrite")
+	@RequestMapping(value = "/board/boardWrite.do")
 	public ModelAndView boardWrite(Model model) {
-		ModelAndView mv = new ModelAndView("/boardWrite");
+		ModelAndView mv = new ModelAndView("/board/boardWrite");
 		return mv;
 	}
 	
-	@RequestMapping(value = "/insertBoard")
+	@RequestMapping(value = "/board/insertBoard.do")
 	public ModelAndView insertBoard(CommandMap commandMap) throws Exception{
-		ModelAndView mv = new ModelAndView("redirect:/boardList");
+		ModelAndView mv = new ModelAndView("redirect:/board/boardList.do");
 		boardService.insertBoardList(commandMap.getMap());
 		return mv;
 	}
 	
-	@RequestMapping(value = "/boardCheck")
+	@RequestMapping(value = "/board/boardCheck.do")
 	public ModelAndView inputBoard(CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("/boardCheck");
+		ModelAndView mv = new ModelAndView("/board/boardCheck");
 		mv.addObject("target", commandMap.getMap());
 		return mv;
 	}
 	
-	@RequestMapping(value = "/boardEditCheck")
+	@RequestMapping(value = "/board/boardEditCheck.do")
 	public ModelAndView editCheckBoard(CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("/boardEdit");
+		ModelAndView mv = new ModelAndView("/board/boardEdit");
 		Map<String, Object> tempMap = boardService.editCheckBoardList(commandMap.getMap());
 		if( tempMap != null){
 			System.out.println(tempMap.entrySet());
 			mv.addObject("edit", tempMap);
 		}else{
-			mv = new ModelAndView("redirect:/boardList");
+			mv = new ModelAndView("redirect:/board/boardList.do");
 		}
 		return mv;			
 	}
 
-	@RequestMapping(value = "/boardEdit")
+	@RequestMapping(value = "/board/boardEdit.do")
 	public ModelAndView editBoard(CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("redirect:/boardList");
+		ModelAndView mv = new ModelAndView("redirect:/board/boardList.do");
 		boardService.editBoardList(commandMap.getMap());
 		return mv;
 	}
 	
-	@RequestMapping(value = "/boardDelete")
+	@RequestMapping(value = "/board/boardDelete.do")
 	public ModelAndView deleteBoard(CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("redirect:/boardList");
+		ModelAndView mv = new ModelAndView("redirect:/board/boardList.do");
 		boardService.deleteBoardList(commandMap.getMap());
 		return mv;
 	}
