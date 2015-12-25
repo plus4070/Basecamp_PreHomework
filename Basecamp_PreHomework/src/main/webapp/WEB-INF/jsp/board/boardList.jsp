@@ -3,10 +3,10 @@
 <html>
 <head>
 <%@ include file="/WEB-INF/include/include-header.jsp" %>
-
+<link rel="stylesheet" type="text/css" href="<c:url value='/css/board/boardList.css'/>" />
 </head>
 <body>
-	<div style="width:1000px; margin:40px auto 0 auto;">
+	<div id="listDiv">
 		<table class="table" style="width:1000px;">
 			<thead>
 				<tr>
@@ -23,13 +23,14 @@
 					<c:forEach items="${list}" var="row">
 						<tr>
 						<input type="hidden" id="BID" value="${row.BID}"/>
+						<input type="hidden" id="EMAIL" value="${row.EMAIL }" />
 							<td>${row.BID}</td>
 							<td>${row.EMAIL}</td>
 							<td>${row.BCONTENT }</td>
 							<td>${row.BDATE }</td>
 							<td>${row.BEDITDATE}</td>
-							<td id="editBtnCol"><input type="button" id="edit" value="수정"/></td>
-							<td id="delBtnCol"><input type="button" id="delete" value="삭제"/></td>
+							<td id="editBtnCol"><input type="button"  id="edit${row.BID }" value="수정" class="btn btn-default"/></td>
+							<td id="delBtnCol"><input type="button" id="delete${row.BID }" value="삭제" class="btn btn-danger"/></td>
 						</tr>
 					</c:forEach>
 				</c:when>
@@ -41,7 +42,7 @@
 			</c:choose>
 			</tbody>
 		</table>
-		<a href="#this" class="btn" id="write">방명록 작성</a>
+		<a href="#this" class="btn btn-primary" id="write">방명록 작성</a>
 	</div>
 	
 	<%@ include file="/WEB-INF/include/include-body.jsp" %>
@@ -52,34 +53,43 @@
 				f_boardWrite();
 			});	
 			
-			$("#edit").on("click", function(e){ //제목 
+			$("input[id^='edit']").on("click", function(e){ //제목 
 				e.preventDefault();
-				f_boardEdit($(this));
+				if(confirm("수정하시겠습니까?") == true){
+					f_boardEdit($(this));
+				}else{
+					return;
+				}
 			});
 			
-			$("#delete").on("click", function(e){ //제목 
+			$("input[id^='delete']").on("click", function(e){ //제목 
 				e.preventDefault();
-				f_boardDelete($(this));
+				if(confirm("삭제하시겠습니까?") == true){
+					f_boardDelete($(this));
+				}else{
+					return;
+				}
 			});
 		});
 		
 		
 		function f_boardWrite(){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/boardWrite' />");
+			comSubmit.setUrl("<c:url value='/board/boardWrite.do' />");
 			comSubmit.submit();
 		}
 		
 		function f_boardEdit(obj){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/boardCheck' />");
+			comSubmit.setUrl("<c:url value='/board/boardCheck.do' />");
 			comSubmit.addParam("BID", obj.parent().parent().find("#BID").val());
+			comSubmit.addParam("EMAIL", obj.parent().parent().find("#EMAIL").val());
 			comSubmit.submit();
 		}
 		
 		function f_boardDelete(obj){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/boardDelete' />");
+			comSubmit.setUrl("<c:url value='/board/boardDelete.do' />");
 			comSubmit.addParam("BID", obj.parent().parent().find("#BID").val());
 			comSubmit.submit();
 		}

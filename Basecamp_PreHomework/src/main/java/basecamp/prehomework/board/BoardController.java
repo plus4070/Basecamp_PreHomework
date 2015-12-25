@@ -58,7 +58,6 @@ public class BoardController {
 		ModelAndView mv = new ModelAndView("/board/boardEdit");
 		Map<String, Object> tempMap = boardService.editCheckBoardList(commandMap.getMap());
 		if( tempMap != null){
-			System.out.println(tempMap.entrySet());
 			mv.addObject("edit", tempMap);
 		}else{
 			mv = new ModelAndView("redirect:/board/boardList.do");
