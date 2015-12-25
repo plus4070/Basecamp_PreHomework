@@ -9,7 +9,6 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import basecamp.prehomework.board.dto.BoardService;
@@ -26,70 +25,58 @@ public class BoardController {
 	@Resource(name="boardService")
 	private BoardService boardService;
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 * @throws Exception 
-	 */
-//	@RequestMapping(value = "/", method = RequestMethod.GET)
-//	public String home(Locale locale, Model model) {
-//		logger.info("Welcome home! The client locale is {}.", locale);
-//
-//		Date date = new Date();
-//		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-//
-//		String formattedDate = dateFormat.format(date);
-//
-//		model.addAttribute("serverTime", formattedDate);
-//		
-//		HashMap<String, String> input = new HashMap<String, String>();
-//		input.put("bContent", "content");
-//		List<HashMap<String, String>> outputs = sqlSession.selectList("userControlMapper.selectSample", input);
-//		System.out.println(outputs.toString());
-//		
-//		return "home";
-//	}
-	
-	@RequestMapping(value = "/boardList")
+	@RequestMapping(value = "/board/boardList.do")
 	public ModelAndView boardList(CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("/boardList");
-    	
+		ModelAndView mv = new ModelAndView("/board/boardList");
     	List<Map<String,Object>> list = boardService.selectBoardList(commandMap.getMap());
     	mv.addObject("list", list);
-    	
 		return mv;
 	}
 	
-	@RequestMapping(value = "/boardWrite")
+	@RequestMapping(value = "/board/boardWrite.do")
 	public ModelAndView boardWrite(Model model) {
-		ModelAndView mv = new ModelAndView("/boardWrite");
-		
+		ModelAndView mv = new ModelAndView("/board/boardWrite");
 		return mv;
 	}
 	
-	@RequestMapping(value = "/insertBoard")
+	@RequestMapping(value = "/board/insertBoard.do")
 	public ModelAndView insertBoard(CommandMap commandMap) throws Exception{
-		ModelAndView mv = new ModelAndView("redirect:/boardList");
-		
-		System.out.println("-----------------------------------------------------------------");
-		System.out.println(commandMap.keySet());
-		System.out.println(commandMap.getMap());
-		System.out.println("-----------------------------------------------------------------");
-		
+		ModelAndView mv = new ModelAndView("redirect:/board/boardList.do");
 		boardService.insertBoardList(commandMap.getMap());
-		
 		return mv;
 	}
 	
-	@RequestMapping(value = "/boardView", method = RequestMethod.GET)
-	public String boardView(Model model) {
-
-		return "boardView";
+	@RequestMapping(value = "/board/boardCheck.do")
+	public ModelAndView inputBoard(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("/board/boardCheck");
+		mv.addObject("target", commandMap.getMap());
+		return mv;
 	}
 	
-	@RequestMapping(value = "/boardEdit", method = RequestMethod.GET)
-	public String boardEdit(Model model) {
+	@RequestMapping(value = "/board/boardEditCheck.do")
+	public ModelAndView editCheckBoard(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("/board/boardEdit");
+		Map<String, Object> tempMap = boardService.editCheckBoardList(commandMap.getMap());
+		if( tempMap != null){
+			mv.addObject("edit", tempMap);
+		}else{
+			mv = new ModelAndView("redirect:/board/boardList.do");
+		}
+		return mv;			
+	}
 
-		return "boardEdit";
+	@RequestMapping(value = "/board/boardEdit.do")
+	public ModelAndView editBoard(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("redirect:/board/boardList.do");
+		boardService.editBoardList(commandMap.getMap());
+		return mv;
+	}
+	
+	@RequestMapping(value = "/board/boardDelete.do")
+	public ModelAndView deleteBoard(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("redirect:/board/boardList.do");
+		boardService.deleteBoardList(commandMap.getMap());
+		return mv;
 	}
 
 }
