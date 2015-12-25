@@ -12,9 +12,6 @@ table, tr, td, th{
 </style>
 </head>
 <body>
-	<h1>This is index page</h1>
-	<div style="height:30px;"></div>
-	
 	<table>
 		<thead>
 			<tr>
@@ -36,7 +33,7 @@ table, tr, td, th{
 						<td>${row.BCONTENT }</td>
 						<td>${row.BDATE }</td>
 						<td>${row.BEDITDATE}</td>
-						<td><input type="button" id="edit" value="수정"/>	</td>
+						<td><input type="button" id="edit" value="수정"/></td>
 						<td><input type="button" id="delete" value="삭제"/></td>
 					</tr>
 				</c:forEach>
@@ -79,7 +76,7 @@ table, tr, td, th{
 		
 		function f_boardEdit(obj){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/boardInput' />");
+			comSubmit.setUrl("<c:url value='/boardCheck' />");
 			comSubmit.addParam("BID", obj.parent().parent().find("#BID").val());
 			comSubmit.submit();
 		}

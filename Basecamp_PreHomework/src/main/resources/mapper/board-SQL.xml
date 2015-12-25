@@ -51,12 +51,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			SELECT
 			    BID,
 			    EMAIL,
-			    PASSWORD
+			    PASSWORD,
+			    BCONTENT
 			FROM
 			    BOARD
 			WHERE
 				BID = #{BID}
 		]]>
     </select>
+    
+    <update id="editBoard" parameterType="java.util.HashMap">
+    	<![CDATA[
+			UPDATE BOARD
+			SET
+				BCONTENT = #{BCONTENT},
+			    BEDITDATE = NOW()
+			WHERE
+				BID = #{BID}
+		]]>
+    </update>
 
 </mapper>
