@@ -29,6 +29,7 @@ public class BoardController {
 	public ModelAndView boardList(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("/board/boardList");
     	List<Map<String,Object>> list = boardService.selectBoardList(commandMap.getMap());
+    	
     	mv.addObject("list", list);
 		return mv;
 	}
@@ -42,7 +43,10 @@ public class BoardController {
 	@RequestMapping(value = "/board/insertBoard.do")
 	public ModelAndView insertBoard(CommandMap commandMap) throws Exception{
 		ModelAndView mv = new ModelAndView("redirect:/board/boardList.do");
-		boardService.insertBoardList(commandMap.getMap());
+		
+		if(!boardService.insertBoardList(commandMap.getMap()))
+			mv = new ModelAndView("redirect:/board/boardEmailCheck.do");
+		
 		return mv;
 	}
 	
@@ -57,11 +61,12 @@ public class BoardController {
 	public ModelAndView editCheckBoard(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("/board/boardEdit");
 		Map<String, Object> tempMap = boardService.editCheckBoardList(commandMap.getMap());
-		if( tempMap != null){
+		
+		if( tempMap != null)
 			mv.addObject("edit", tempMap);
-		}else{
+		else
 			mv = new ModelAndView("redirect:/board/boardList.do");
-		}
+		
 		return mv;			
 	}
 
@@ -76,6 +81,12 @@ public class BoardController {
 	public ModelAndView deleteBoard(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("redirect:/board/boardList.do");
 		boardService.deleteBoardList(commandMap.getMap());
+		return mv;
+	}
+	
+	@RequestMapping(value = "/board/boardEmailCheck.do")
+	public ModelAndView emailCheckBoard(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("/board/boardEmailCheck");
 		return mv;
 	}
 
