@@ -1,4 +1,6 @@
-language: java
+sudo: require
+
+languxage: java
 
 jdk:
   - oraclejdk8
