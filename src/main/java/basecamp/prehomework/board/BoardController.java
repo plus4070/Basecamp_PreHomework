@@ -20,8 +20,6 @@ import basecamp.prehomework.common.map.CommandMap;
 @Controller
 public class BoardController {
 
-	Logger logger = Logger.getLogger(BoardController.class);
-
 	@Resource(name="boardService")
 	private BoardService boardService;
 	
