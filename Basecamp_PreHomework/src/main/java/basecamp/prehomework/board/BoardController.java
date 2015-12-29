@@ -5,7 +5,6 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +18,6 @@ import basecamp.prehomework.common.map.CommandMap;
  */
 @Controller
 public class BoardController {
-
-	Logger logger = Logger.getLogger(BoardController.class);
 
 	@Resource(name="boardService")
 	private BoardService boardService;
