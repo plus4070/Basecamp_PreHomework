@@ -12,15 +12,15 @@
 			<table id="writeTable">
 				<tr>
 					<th>이메일 입력</th>
-					<td><input type="email" id="EMAIL" name="EMAIL" class="form-control" placeholder="Email"></input></td>
+					<td><input type="email" id="EMAIL" name="EMAIL" class="form-control" placeholder="Email" required></input></td>
 				</tr>
 				<tr>
 					<th>비밀번호 입력</th>
-					<td><input type="password" id="PASSWORD" name="PASSWORD" class="form-control" placeholder="Password"></input></td>
+					<td><input type="password" id="PASSWORD" name="PASSWORD" class="form-control" placeholder="Password" required></input></td>
 				</tr>
 				<tr>
 					<th>내용 입력</th>
-					<td><textarea id="content" rows="15" id="BCONTENT" name="BCONTENT" onkeyup = "f_lengthCheck()"></textarea></td>
+					<td><textarea id="content" rows="15" id="BCONTENT" name="BCONTENT" onkeyup = "f_lengthCheck()" required></textarea></td>
 				</tr>
 				<tr>
 					<th></th>

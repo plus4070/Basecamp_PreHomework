@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			    BEDITDATE
 			FROM
 			    BOARD
-			ORDER BY BID DESC
+			ORDER BY IF(ISNULL(BEDITDATE), BDATE, BEDITDATE) DESC
 		]]>
     </select>
 
