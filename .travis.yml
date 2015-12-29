@@ -2,4 +2,7 @@ sudo: require
 
 languxage: java
 
+jdk:
+  - oraclejdk8
+  
 mvn test
