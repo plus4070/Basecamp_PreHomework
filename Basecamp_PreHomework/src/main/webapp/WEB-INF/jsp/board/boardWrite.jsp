@@ -20,7 +20,7 @@
 				</tr>
 				<tr>
 					<th>내용 입력</th>
-					<td><textarea id="content" rows="15" id="BCONTENT" name="BCONTENT"></textarea></td>
+					<td><textarea id="content" rows="15" id="BCONTENT" name="BCONTENT" onkeyup = "f_lengthCheck()"></textarea></td>
 				</tr>
 				<tr>
 					<th></th>
@@ -58,6 +58,17 @@
 		comSubmit.setUrl("<c:url value='/board/insertBoard.do' />");
 		comSubmit.submit();
 	}
+	
+	function f_lengthCheck(){  
+		  var frm = document.writeForm.BCONTENT; 
+
+		  if(frm.value.length > 300){  
+		       alert("글자수는 300자로 제한됩니다.");  
+		       frm.value = frm.value.substring(0, 300);  
+		       frm.focus();  
+		  } 
+
+		} 
 	</script>
 </body>
 </html>
