@@ -7,14 +7,14 @@
 </head>
 <body>
 	<div id="listDiv">
-		<table class="table" style="width:1000px;">
+		<table class="table" style="width:1000px; word-break:break-all;">
 			<thead>
 				<tr>
-					<th>글 번호</th>
-					<th>이메일</th>
-					<th>본문</th>
-					<th>글 등록시간</th>
-					<th>글 수정시간</th>
+					<th id="docNum">글 번호</th>
+					<th id="docEmail">이메일</th>
+					<th id="docContent">본문</th>
+					<th id="docDate">글 등록시간</th>
+					<th id="docEDate">글 수정시간</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -22,9 +22,9 @@
 				<c:when test="${f:length(list) > 0}">
 					<c:forEach items="${list}" var="row">
 						<tr>
-						<input type="hidden" id="BID" value="${row.BID}"/>
-						<input type="hidden" id="EMAIL" value="${row.EMAIL }" />
-							<td>${row.BID}</td>
+							<input type="hidden" id="BID" value="${row.BID}"/>
+							<input type="hidden" id="EMAIL" value="${row.EMAIL }" />
+							<td class="docNum">${row.BID}</td>
 							<td>${row.EMAIL}</td>
 							<td>${row.BCONTENT }</td>
 							<td>${row.BDATE }</td>
