@@ -1,6 +1,6 @@
 sudo: require
 
-languxage: java
+language: java
 
 jdk:
   - oraclejdk8
