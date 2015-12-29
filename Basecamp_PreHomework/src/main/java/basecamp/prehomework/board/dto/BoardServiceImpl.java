@@ -31,17 +31,15 @@ public class BoardServiceImpl implements BoardService {
 		String emailInput = map.get("EMAIL").toString();
 		Matcher matcher = pattern.matcher(emailInput);
 
-		if(matcher.matches()){
-			boardDAO.insertBoard(map);
-			return true;
-		}else{
+		if(!matcher.matches())
 			return false;
-		}
+		
+		boardDAO.insertBoard(map);
+		return true;
 	}
 
 	@Override
 	public void deleteBoardList(Map<String, Object> map) throws Exception {
-		System.out.println("deleteBoardList");
 		boardDAO.deleteBoard(map);
 	}
 
@@ -55,10 +53,9 @@ public class BoardServiceImpl implements BoardService {
 		Map<String, Object> tempMap = boardDAO.editCheckBoard(map);
 		
 		if(tempMap.get("BID").toString().equals(map.get("BID").toString()))
-			if(tempMap.get("PASSWORD").toString().equals(map.get("PASSWORD").toString())){
+			if(tempMap.get("PASSWORD").toString().equals(map.get("PASSWORD").toString()))
 				return tempMap;
-			}
-		
+
 		return null;
 	}
 

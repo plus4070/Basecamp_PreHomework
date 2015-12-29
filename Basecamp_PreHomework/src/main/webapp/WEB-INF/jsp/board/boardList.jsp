@@ -20,11 +20,12 @@
 			<tbody>
 				<c:choose>
 				<c:when test="${f:length(list) > 0}">
-					<c:forEach items="${list}" var="row">
+					<c:set var="rowLen" value="${f:length(list)}" />
+					<c:forEach items="${list}" var="row" varStatus="status">
 						<tr>
 							<input type="hidden" id="BID" value="${row.BID}"/>
-							<input type="hidden" id="EMAIL" value="${row.EMAIL }" />
-							<td class="docNum">${row.BID}</td>
+							<input type="hidden" id="EMAIL" value="${row.EMAIL}" />
+							<td>${rowLen-status.index}</td>
 							<td>${row.EMAIL}</td>
 							<td>${row.BCONTENT }</td>
 							<td>${row.BDATE }</td>
