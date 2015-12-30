@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<!DOCTYPE html>
 <html>
 <head>
 <%@ include file="/WEB-INF/include/include-header.jsp" %>
@@ -10,29 +9,29 @@
 </head>
 <body>
 	<div class="bs-callout-info">
-		<p>º¯°æÇÒ ³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä.</p>
+		<p>ë³€ê²½í•  ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”.</p>
 	</div>
 	<div id="editDiv">
 		<form id="editForm">
 			<input type="hidden" id="BID" name="BID" value="${edit.BID }"/>
 			<table id="editTable">
 				<tr>
-					<th>±Û ¹øÈ£</th>
+					<th>ê¸€ ë²ˆí˜¸</th>
 					<td>${edit.BID }</td>
 				</tr>
 				<tr>
-					<th>ÀÌ¸ŞÀÏ</th>
+					<th>ì´ë©”ì¼</th>
 					<td>${edit.EMAIL }</td>
 				</tr>
 				<tr>
-					<th>³»¿ë</th>
+					<th>ë‚´ìš©</th>
 					<td><textarea rows="15" id="BCONTENT" name="BCONTENT">${edit.BCONTENT }</textarea></td>
 				</tr>
 				<tr>
 					<th></th>
 					<td>
-						<input type="button" id="btnSubmit" value="È®ÀÎ" class="btn btn-primary"/>
-						<input type="button" id="btnCancel" value="Ãë¼Ò" class="btn btn-default"/>
+						<input type="button" id="btnSubmit" value="í™•ì¸" class="btn btn-primary"/>
+						<input type="button" id="btnCancel" value="ì·¨ì†Œ" class="btn btn-default"/>
 					</td>
 				</tr>
 			</table>
@@ -43,12 +42,12 @@
 	<%@ include file="/WEB-INF/include/include-body.jsp" %>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$("#btnSubmit").on("click", function(e){ //È®ÀÎ ¹öÆ°
+			$("#btnSubmit").on("click", function(e){ //í™•ì¸ ë²„íŠ¼
 				e.preventDefault();
 				f_EditBoard();
 			});	
 			
-			$("#btnCancel").on("click", function(e){ //Ãë¼Ò ¹öÆ°
+			$("#btnCancel").on("click", function(e){ //ì·¨ì†Œ ë²„íŠ¼
 				e.preventDefault();
 				f_EditCancel();
 			});

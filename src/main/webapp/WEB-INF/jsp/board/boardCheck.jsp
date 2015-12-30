@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +7,7 @@
 </head>
 <body>
 	<div class="bs-callout-info">
-		<p>ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.</p>
+		<p>ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.</p>
 	</div>
 	<div id="checkDiv">
 		<form id="inputForm">
@@ -16,18 +15,18 @@
 			<input type="hidden" id="EMAIL" name="EMAIL" value="${target.EMAIL }" />
 			<table id="checkTable">
 				<tr>
-					<th>ÀÌ¸ŞÀÏ</th>
+					<th>ì´ë©”ì¼</th>
 					<td>${target.EMAIL }</td>
 				</tr>
 				<tr>
-					<th>ºñ¹Ğ¹øÈ£</th>
+					<th>ë¹„ë°€ë²ˆí˜¸</th>
 					<td><input type="password" id="PASSWORD" name="PASSWORD" class="form-control" placeholder="Password" /></td>
 				</tr>
 				<tr>
 					<th></th>
 					<td>
-						<input type="button" value="È®ÀÎ" id="btnSubmit" class="btn btn-primary" />
-						<input type="button" value="Ãë¼Ò" id="btnCancel" class="btn btn-default"/>
+						<input type="button" value="í™•ì¸" id="btnSubmit" class="btn btn-primary" />
+						<input type="button" value="ì·¨ì†Œ" id="btnCancel" class="btn btn-default"/>
 					</td>
 				</tr>
 			</table>
@@ -36,12 +35,12 @@
 	<%@ include file="/WEB-INF/include/include-body.jsp" %>
 	<script>
 		$(document).ready(function(){
-			$("#btnSubmit").on("click", function(e){ //È®ÀÎ ¹öÆ°
+			$("#btnSubmit").on("click", function(e){ //í™•ì¸ ë²„íŠ¼
 				e.preventDefault();
 				f_InputCheck($(this));
 			});	
 			
-			$("#btnCancel").on("click", function(e){ //Ãë¼Ò ¹öÆ°
+			$("#btnCancel").on("click", function(e){ //ì·¨ì†Œ ë²„íŠ¼
 				e.preventDefault();
 				history.back();
 			});

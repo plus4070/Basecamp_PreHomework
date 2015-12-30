@@ -1,5 +1,7 @@
 package basecamp.prehomework.board;
 
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 
@@ -22,10 +24,16 @@ public class BoardController {
 	@Resource(name="boardService")
 	private BoardService boardService;
 	
+	ZonedDateTime timeNow = ZonedDateTime.now();
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+	
+	
 	@RequestMapping(value = "/board/boardList.do")
 	public ModelAndView boardList(CommandMap customMap) throws Exception {
 		ModelAndView mv = new ModelAndView("/board/boardList");
     	List<Map<String,Object>> list = boardService.selectBoardList(customMap.getMap());
+    	
+    	timeNow = ZonedDateTime.now();
     	
     	mv.addObject("list", list);
 		return mv;
@@ -62,7 +70,7 @@ public class BoardController {
 		if( tempMap != null)
 			mv.addObject("edit", tempMap);
 		else
-			mv = new ModelAndView("redirect:/board/boardList.do");
+			mv = new ModelAndView("redirect:/board/boardPasswordCheck.do");
 		
 		return mv;			
 	}
@@ -84,6 +92,12 @@ public class BoardController {
 	@RequestMapping(value = "/board/boardEmailCheck.do")
 	public ModelAndView emailCheckBoard(Model model) throws Exception {
 		ModelAndView mv = new ModelAndView("/board/boardEmailCheck");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/board/boardPasswordCheck.do")
+	public ModelAndView passwordCheckBoard(Model model) throws Exception {
+		ModelAndView mv = new ModelAndView("/board/boardPasswordCheck");
 		return mv;
 	}
 
