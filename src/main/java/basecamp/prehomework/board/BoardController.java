@@ -12,7 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import basecamp.prehomework.board.dto.BoardService;
+import basecamp.prehomework.board.service.BoardService;
 import basecamp.prehomework.common.map.CommandMap;
 
 /**

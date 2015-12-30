@@ -1,4 +1,4 @@
-package basecamp.prehomework.board.dto;
+package basecamp.prehomework.board.service;
 
 import java.util.List;
 import java.util.Map;

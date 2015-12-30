@@ -132,7 +132,8 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.7</version>
+			<version>4.12</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
@@ -153,6 +154,11 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
 			<version>4.2.3.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.1.7.RELEASE</version>
 		</dependency>
 	</dependencies>
     <build>
