@@ -10,11 +10,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			    BID,
 			    EMAIL,
 			    BCONTENT,
-			    BDATE,
-			    BEDITDATE
+			    LEFT(BDATE, 10) BDATE,
+			    LEFT(BEDITDATE, 10) BEDITDATE
 			FROM
 			    BOARD
-			ORDER BY IF(ISNULL(BEDITDATE), BDATE, BEDITDATE) DESC
+			ORDER BY 
+				IF(ISNULL(BEDITDATE), BDATE, BEDITDATE) DESC
 		]]>
     </select>
 

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"  %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +28,7 @@
 						<tr>
 							<input type="hidden" id="BID" value="${row.BID}"/>
 							<input type="hidden" id="EMAIL" value="${row.EMAIL}" />
-							<td>${rowLen-status.index}</td>
+							<td style="text-align:center;">${rowLen-status.index}</td>
 							<td>${row.EMAIL}</td>
 							<td>${row.BCONTENT }</td>
 							<td>${row.BDATE }</td>
