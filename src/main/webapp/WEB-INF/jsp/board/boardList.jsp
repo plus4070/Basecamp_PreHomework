@@ -47,6 +47,10 @@
 			</tbody>
 		</table>
 		<a href="#this" class="btn btn-primary" id="write">방명록 작성</a>
+		<footer id="footer">
+			<hr><br>
+			<div id="copyRight"><a href="https://github.com/plus4070/Basecamp_PreHomework"> plus4070/Basecamp_PreHomework </a><span class="label label-success" id="gitLabel" onclick="pageToGit()">GitHub</span></div>
+		</footer>
 	</div>
 	
 	<%@ include file="/WEB-INF/include/include-body.jsp" %>
@@ -97,6 +101,8 @@
 			comSubmit.addParam("BID", obj.parent().parent().find("#BID").val());
 			comSubmit.submit();
 		}
+		
+		
 	</script>
 </body>
 </html>

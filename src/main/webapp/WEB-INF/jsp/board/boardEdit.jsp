@@ -17,7 +17,7 @@
 			<table id="editTable">
 				<tr>
 					<th>글 번호</th>
-					<td>${edit.BID }</td>
+					<td>${edit.BID-1 }</td>
 				</tr>
 				<tr>
 					<th>이메일</th>
@@ -36,7 +36,10 @@
 				</tr>
 			</table>
 		</form>
-		
+		<footer id="footer">
+			<hr><br>
+			<div id="copyRight"><a href="https://github.com/plus4070/Basecamp_PreHomework"> plus4070/Basecamp_PreHomework </a><span class="label label-success" id="gitLabel" onclick="pageToGit()">GitHub</span></div>
+		</footer>
 	</div>
 
 	<%@ include file="/WEB-INF/include/include-body.jsp" %>

@@ -9,3 +9,9 @@
 #checkTable td{	width:400px; }
 
 #btnSubmit{	margin-left:100px; }
+
+#footer{ width:100%; height:100px; }
+
+#gitLabel{ cursor:pointer; }
+
+#copyRight{ margin:0 auto; width:280px; }
