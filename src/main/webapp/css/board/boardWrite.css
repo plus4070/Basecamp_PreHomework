@@ -1,0 +1,13 @@
+#writeDiv{ width:1000px; margin:40px auto 0 auto; }
+
+#writeTable { margin:0 auto; }
+
+#writeTable th{ width:120px; }
+
+#writeTable tr{	height:60px; }
+
+#writeTable td{ width:300px; }
+
+#content{ width:100%; resize:none; wrap:hard; }
+
+.bs-callout-info{ width:1000px; border: 1px solid #eee; border-left-color: #1b809e; padding: 20px; margin: 40px auto 0 auto; border-left-width: 5px; border-radius: 3px;}
