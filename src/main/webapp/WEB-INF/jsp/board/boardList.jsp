@@ -6,6 +6,9 @@
 <link rel="stylesheet" type="text/css" href="<c:url value='/css/board/boardList.css'/>" />
 </head>
 <body>
+	<div class="bs-callout-info">
+		<p>방명록</p>
+	</div>
 	<div id="listDiv">
 		<table class="table" style="width:1000px; word-break:break-all;">
 			<thead>

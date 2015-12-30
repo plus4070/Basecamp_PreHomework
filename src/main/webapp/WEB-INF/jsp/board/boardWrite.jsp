@@ -7,12 +7,15 @@
 <link rel="stylesheet" type="text/css" href="<c:url value='/css/board/boardWrite.css'/>" />
 </head>
 <body>
+	<div class="bs-callout-info">
+		<p>변경할 내용을 입력하세요.</p>
+	</div>
 	<div id="writeDiv">
 		<form id="writeForm" name="writeForm">
 			<table id="writeTable">
 				<tr>
 					<th>이메일 입력</th>
-					<td><input type="email" id="EMAIL" name="EMAIL" class="form-control" placeholder="Email" required></input></td>
+					<td><input type="email" id="EMAIL" name="EMAIL" class="form-control" placeholder="Email" required autocomplete="off"></input></td>
 				</tr>
 				<tr>
 					<th>비밀번호 입력</th>
