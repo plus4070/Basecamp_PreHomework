@@ -27,9 +27,12 @@ public class BoardController {
 	ZonedDateTime timeNow = ZonedDateTime.now();
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
 	
+	Runnable runnable;
 	
 	@RequestMapping(value = "/board/boardList.do")
 	public ModelAndView boardList(CommandMap customMap) throws Exception {
+		runnable = () -> System.out.println("boardList.do");
+		runnable.run();
 		ModelAndView mv = new ModelAndView("/board/boardList");
     	List<Map<String,Object>> list = boardService.selectBoardList(customMap.getMap());
     	
@@ -41,12 +44,16 @@ public class BoardController {
 	
 	@RequestMapping(value = "/board/boardWrite.do")
 	public ModelAndView boardWrite(Model model) {
+		runnable = () -> System.out.println("boardWrite.do");
+		runnable.run();
 		ModelAndView mv = new ModelAndView("/board/boardWrite");
 		return mv;
 	}
-	
+
 	@RequestMapping(value = "/board/insertBoard.do")
 	public ModelAndView insertBoard(CommandMap customMap) throws Exception{
+		runnable = () -> System.out.println("insertBoard.do");
+		runnable.run();
 		ModelAndView mv = new ModelAndView("redirect:/board/boardList.do");
 		
 		if(!boardService.insertBoardList(customMap.getMap()))
@@ -57,6 +64,8 @@ public class BoardController {
 	
 	@RequestMapping(value = "/board/boardCheck.do")
 	public ModelAndView inputBoard(CommandMap customMap) throws Exception {
+		runnable = () -> System.out.println("boardCheck.do");
+		runnable.run();
 		ModelAndView mv = new ModelAndView("/board/boardCheck");
 		mv.addObject("target", customMap.getMap());
 		return mv;
@@ -64,6 +73,8 @@ public class BoardController {
 	
 	@RequestMapping(value = "/board/boardEditCheck.do")
 	public ModelAndView editCheckBoard(CommandMap customMap) throws Exception {
+		runnable = () -> System.out.println("boardEditCheck.do");
+		runnable.run();
 		ModelAndView mv = new ModelAndView("/board/boardEdit");
 		Map<String, Object> tempMap = boardService.editCheckBoardList(customMap.getMap());
 		
@@ -77,6 +88,8 @@ public class BoardController {
 
 	@RequestMapping(value = "/board/boardEdit.do")
 	public ModelAndView editBoard(CommandMap customMap) throws Exception {
+		runnable = () -> System.out.println("boardEdit.do");
+		runnable.run();
 		ModelAndView mv = new ModelAndView("redirect:/board/boardList.do");
 		boardService.editBoardList(customMap.getMap());
 		return mv;
@@ -84,6 +97,8 @@ public class BoardController {
 	
 	@RequestMapping(value = "/board/boardDelete.do")
 	public ModelAndView deleteBoard(CommandMap customMap) throws Exception {
+		runnable = () -> System.out.println("boardDelete.do");
+		runnable.run();
 		ModelAndView mv = new ModelAndView("redirect:/board/boardList.do");
 		boardService.deleteBoardList(customMap.getMap());
 		return mv;
@@ -91,12 +106,16 @@ public class BoardController {
 	
 	@RequestMapping(value = "/board/boardEmailCheck.do")
 	public ModelAndView emailCheckBoard(Model model) throws Exception {
+		runnable = () -> System.out.println("boardEmailCheck.do");
+		runnable.run();
 		ModelAndView mv = new ModelAndView("/board/boardEmailCheck");
 		return mv;
 	}
 	
 	@RequestMapping(value = "/board/boardPasswordCheck.do")
 	public ModelAndView passwordCheckBoard(Model model) throws Exception {
+		runnable = () -> System.out.println("boardPasswordCheck.do");
+		runnable.run();
 		ModelAndView mv = new ModelAndView("/board/boardPasswordCheck");
 		return mv;
 	}
