@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 sudo: require
 
 language: java
 
 jdk:
   - oraclejdk8
+=======
+sudo: require
+
+language: java
+
+jdk:
+  - oraclejdk8
+>>>>>>> origin/savePoint1
