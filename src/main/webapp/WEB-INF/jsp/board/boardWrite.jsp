@@ -32,8 +32,11 @@
 					</td>
 				</tr>
 			</table>
-			
 		</form>
+		<footer id="footer">
+			<hr><br>
+			<div id="copyRight"><a href="https://github.com/plus4070/Basecamp_PreHomework"> plus4070/Basecamp_PreHomework </a><span class="label label-success" id="gitLabel" onclick="pageToGit()">GitHub</span></div>
+		</footer>
 	</div>
 	<%@ include file="/WEB-INF/include/include-body.jsp" %>
 	<script type="text/javascript">
