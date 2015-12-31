@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import basecamp.prehomework.board.Appconfig.AppConfig;
+import basecamp.prehomework.board.dao.BoardDAO;
 import basecamp.prehomework.board.service.BoardService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -20,6 +21,9 @@ public class JUnitSpringTest {
 
 	@Autowired
 	private BoardService boardService;
+	
+	@Autowired
+	private BoardDAO boardDAO;
 	
 	static Runnable setup = () -> System.out.println("<-----Set up----->");
 	static Runnable finish = () -> System.out.println("<-----finish----->");
